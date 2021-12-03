@@ -1,10 +1,19 @@
 import type { NextPage } from "next";
+import Layout from "../components/Layout";
+import HeroHomePage from "../components/HeroHomepage";
 
 const Home: NextPage = () => {
+  const metaInfo = {
+    title: "Robots Market - Buy the best robots from here",
+    metaKeywords: "best robots, buy robots",
+    metaDesc: "Best robots and cheap rates available",
+  };
   return (
-    <div className="w-screen h-screen bg-grey-200 flex items-center justify-center text-3xl">
-      Welcome to Robots Market
-    </div>
+    <Layout metaInfo={metaInfo}>
+      <div className="">
+        <HeroHomePage />
+      </div>
+    </Layout>
   );
 };
 
