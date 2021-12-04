@@ -43,12 +43,12 @@ const Navbar = () => {
             </a>
           </Link>
 
-          <Link href="/about">
+          <Link href="#">
             <a className="lg:inline-flex lg:w-auto px-3 py-2 rounded hover:bg-blue-800 hover:bg-gray-900">
               About
             </a>
           </Link>
-          <Link href="/contact">
+          <Link href="#">
             <a className="lg:inline-flex lg:w-auto px-3 py-2 rounded hover:bg-blue-800 hover:bg-gray-900">
               Contact Us
             </a>
