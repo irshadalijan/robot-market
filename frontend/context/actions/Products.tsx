@@ -2,7 +2,8 @@ import {
   START_LOADING,
   CHANGE_PAGE,
   GET_ROBOTS,
-  ADD_TO_CART,
+  CART_UPDATE,
+  FILTER_MATERIAL,
 } from "../../utils/appConstants";
 import useCallApi from "../../utils/useCallApi";
 
@@ -25,9 +26,29 @@ export const addToCartAction = (key: number, product: {}, dispatch) => {
   let arr = [] as any;
   arr["key"] = key;
   arr["product"] = product;
+  arr["action"] = "add";
 
   dispatch({
-    type: ADD_TO_CART,
+    type: CART_UPDATE,
     payload: arr,
+  });
+};
+
+export const removeFromCartAction = (key: number, product: {}, dispatch) => {
+  let arr = [] as any;
+  arr["key"] = key;
+  arr["product"] = product;
+  arr["action"] = "remove";
+
+  dispatch({
+    type: CART_UPDATE,
+    payload: arr,
+  });
+};
+
+export const FilterByMaterialAction = (val: string, dispatch) => {
+  dispatch({
+    type: FILTER_MATERIAL,
+    payload: val,
   });
 };

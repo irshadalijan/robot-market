@@ -23,7 +23,11 @@ const ProductItem = (props) => {
   };
 
   const addToCart = (key: number, product: {}) => {
-    addToCartAction(key, product, productsDispatch);
+    if (productsState.cartItems.length < 5) {
+      addToCartAction(key, product, productsDispatch);
+    } else {
+      alert("Cannot add more than 5 different robots");
+    }
   };
 
   return (

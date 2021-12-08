@@ -10,6 +10,7 @@ const productsInitialState = {
   currPage: 1,
   perPage: 15,
   totalResults: 0,
+  cartTotal: 0,
 };
 export const GlobalProvider = ({ children }) => {
   const [productsState, productsDispatch] = useReducer(
