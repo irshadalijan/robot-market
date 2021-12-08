@@ -36,7 +36,12 @@ const Products = () => {
                   <h3 className="text-right font-bold uppercase w-3/4 px-2">
                     Filter Robots by Material
                   </h3>
-                  <select className="w-1/4 px-2" onChange={e => FilterByMaterialAction(e.target.value,productsDispatch)}>>
+                  <select
+                    className="w-1/4 px-2"
+                    onChange={(e) =>
+                      FilterByMaterialAction(e.target.value, productsDispatch)
+                    }
+                  >
                     <option value="">Select</option>
                     <option value="Concrete">Concrete</option>
                     <option value="Cotton">Cotton</option>

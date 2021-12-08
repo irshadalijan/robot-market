@@ -9,7 +9,6 @@ import { FaPlus, FaMinus } from "react-icons/fa";
 
 const Cart = () => {
   const { productsDispatch, productsState } = useContext(GlobalContext);
-  useEffect(() => {}, [productsState.cartItems.length]);
 
   return (
     <div className="sticky top-0 p-4 w-full">
@@ -31,7 +30,7 @@ const Cart = () => {
                   Price
                 </h3>
               </div>
-              {productsState.cartItems.map((item) => (
+              {productsState.cartItems.map((item: any) => (
                 <div
                   key={item.id}
                   className="flex items-center -mx-8 px-4 py-5"

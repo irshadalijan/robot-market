@@ -6,8 +6,9 @@ import {
   FILTER_MATERIAL,
 } from "../../utils/appConstants";
 import useCallApi from "../../utils/useCallApi";
+import { iTypes } from "../../utils/appInterfaces";
 
-export const ProductsListAction = (dispatch) => {
+export const ProductsListAction = (dispatch: iTypes["dispatch"]) => {
   dispatch({
     type: START_LOADING,
   });
@@ -15,14 +16,21 @@ export const ProductsListAction = (dispatch) => {
   useCallApi("robots", GET_ROBOTS, dispatch);
 };
 
-export const setCurrPageAction = (page: number, dispatch) => {
+export const setCurrPageAction = (
+  page: number,
+  dispatch: iTypes["dispatch"]
+) => {
   dispatch({
     type: CHANGE_PAGE,
     payload: page,
   });
 };
 
-export const addToCartAction = (key: number, product: {}, dispatch) => {
+export const addToCartAction = (
+  key: number,
+  product: {},
+  dispatch: iTypes["dispatch"]
+) => {
   let arr = [] as any;
   arr["key"] = key;
   arr["product"] = product;
@@ -34,7 +42,11 @@ export const addToCartAction = (key: number, product: {}, dispatch) => {
   });
 };
 
-export const removeFromCartAction = (key: number, product: {}, dispatch) => {
+export const removeFromCartAction = (
+  key: number,
+  product: {},
+  dispatch: iTypes["dispatch"]
+) => {
   let arr = [] as any;
   arr["key"] = key;
   arr["product"] = product;
@@ -46,7 +58,10 @@ export const removeFromCartAction = (key: number, product: {}, dispatch) => {
   });
 };
 
-export const FilterByMaterialAction = (val: string, dispatch) => {
+export const FilterByMaterialAction = (
+  val: string,
+  dispatch: iTypes["dispatch"]
+) => {
   dispatch({
     type: FILTER_MATERIAL,
     payload: val,

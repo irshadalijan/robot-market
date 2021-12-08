@@ -8,7 +8,7 @@ import {
 } from "../../utils/appConstants";
 
 const ProductsReducer = (
-  state,
+  state: any,
   action: {
     type: string;
     payload:
@@ -59,8 +59,12 @@ const ProductsReducer = (
       let prodKey = action.payload["key"];
       let prodObj = action.payload["product"];
       let prevCartItems = state.cartItems || [];
-      const haveInCart = prevCartItems.find((p) => p.id === prodKey);
-      const listItem = state.list.find((p, i) => i === prodKey);
+      const haveInCart = prevCartItems.find(
+        (p: { id: string | number }) => p.id === prodKey
+      );
+      const listItem = state.list.find(
+        (p: any, i: string | number) => i === prodKey
+      );
       let updateCartItems = [...prevCartItems];
 
       if (haveInCart) {
@@ -79,7 +83,9 @@ const ProductsReducer = (
             : p
         );
         if (action.payload["action"] == "remove" && qty === 0) {
-          updateCartItems = prevCartItems.filter((p) => p.id !== prodKey);
+          updateCartItems = prevCartItems.filter(
+            (p: { id: number | string }) => p.id !== prodKey
+          );
         }
       } else {
         if (action.payload["action"] == "add") {
@@ -99,7 +105,7 @@ const ProductsReducer = (
       return {
         ...state,
         cartItems: updateCartItems,
-        list: state.list.map((p, i) =>
+        list: state.list.map((p: any, i: number | string) =>
           i === prodKey
             ? {
                 ...listItem,
@@ -119,7 +125,9 @@ const ProductsReducer = (
       let material = action.payload;
       let filteredList =
         material != ""
-          ? state.allResults.filter((p) => p.material == material)
+          ? state.allResults.filter(
+              (p: { material: string }) => p.material == material
+            )
           : state.list;
       return {
         ...state,

@@ -9,3 +9,18 @@ export interface productsProps {
   };
   products: productsProps["item"][];
 }
+
+export interface contextProps {
+  productsState: any;
+  productsDispatch: any;
+}
+
+export interface iTypes {
+  dispatch: ({
+    type,
+    payload,
+  }: {
+    type: string;
+    payload?: number | string | any[];
+  }) => void;
+}

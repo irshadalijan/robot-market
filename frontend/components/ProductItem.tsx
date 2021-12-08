@@ -5,7 +5,7 @@ import { formatPrice, formatDate } from "../utils/helpers";
 import { addToCartAction } from "../context/actions/Products";
 import { GlobalContext } from "../context/Provider";
 
-const ProductItem = (props) => {
+const ProductItem = (props: any) => {
   const { productsDispatch, productsState } = useContext(GlobalContext);
 
   const {

@@ -1,7 +1,8 @@
 import { createContext, useReducer } from "react";
 import ProductsReducer from "./reducers/Products";
+import { contextProps } from "../utils/appInterfaces";
 
-export const GlobalContext = createContext({});
+export const GlobalContext = createContext({} as contextProps);
 const productsInitialState = {
   isLoaded: false,
   list: [],
@@ -12,7 +13,7 @@ const productsInitialState = {
   totalResults: 0,
   cartTotal: 0,
 };
-export const GlobalProvider = ({ children }) => {
+export const GlobalProvider = ({ children }: any) => {
   const [productsState, productsDispatch] = useReducer(
     ProductsReducer,
     productsInitialState

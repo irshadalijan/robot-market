@@ -14,8 +14,8 @@ const Paginate = (props: pageProps) => {
   }
 
   return (
-    totalPages > 1 && (
-      <div className="w-full bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
+    <div className="w-full bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
+      {totalPages > 0 && (
         <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
           <div className="mx-3">
             <nav
@@ -58,8 +58,8 @@ const Paginate = (props: pageProps) => {
             </nav>
           </div>
         </div>
-      </div>
-    )
+      )}
+    </div>
   );
 };
 
