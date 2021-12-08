@@ -1,29 +1,25 @@
-import { useState, useEffect } from "react";
-import appConstants from "./appConstants";
+import axios from "axios";
+import { apiBaseUrl, END_LOADING } from "./appConstants";
 
-export default function useCallApi(param: string) {
-  const [data, setData] = useState([] as any);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [error, setError] = useState("");
-  const url = `${appConstants.apiBaseUrl}${param}`;
+export default function useCallApi(
+  param: string,
+  dispatchType: string,
+  dispatchFunc: any
+) {
+  const apiCall = axios.create({
+    baseURL: apiBaseUrl,
+  });
 
-  useEffect(() => {
-    fetch(url)
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          setData(result.data);
-          setIsLoaded(true);
-        },
-        (err) => {
-          setError("Data Cannnot be Fetched");
-          setIsLoaded(true);
-        }
-      );
-    return () => {
-      setIsLoaded(false);
-    };
-  }, [url]);
-
-  return { error, isLoaded, data };
+  apiCall
+    .get(param)
+    .then((res) => {
+      dispatchFunc({
+        type: dispatchType,
+        payload: res.data.data,
+      });
+      dispatchFunc({
+        type: END_LOADING,
+      });
+    })
+    .catch((e) => console.log("error", e));
 }

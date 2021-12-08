@@ -1,8 +1,13 @@
+import { useContext } from "react";
 import Image from "next/image";
 import { productsProps } from "../utils/appInterfaces";
 import { formatPrice, formatDate } from "../utils/helpers";
+import { addToCartAction } from "../context/actions/Products";
+import { GlobalContext } from "../context/Provider";
 
 const ProductItem = (props) => {
+  const { productsDispatch, productsState } = useContext(GlobalContext);
+
   const {
     name,
     price,
@@ -16,6 +21,11 @@ const ProductItem = (props) => {
     cls: `${stock > 0 ? "bg-gray-500" : "bg-red-400"}`,
     cartBtn: stock > 0 ? false : true,
   };
+
+  const addToCart = (key: number, product: {}) => {
+    addToCartAction(key, product, productsDispatch);
+  };
+
   return (
     <div className="rounded overflow-hidden shadow-lg">
       <div className="h-64 relative">
@@ -58,6 +68,7 @@ const ProductItem = (props) => {
           type="button"
           className="w-full text-center text-lg bg-yellow-300 rounded px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 disabled:opacity-50"
           disabled={stockObj.cartBtn}
+          onClick={() => addToCart(props.id, props.item)}
         >
           Add to Cart
         </button>
