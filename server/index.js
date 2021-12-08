@@ -13,7 +13,7 @@ app.get("/api/robots", (req, res) => {
 
   for (let i = 0; i < MAX_ROBOTS; i++) {
     const name = faker.name.firstName() + " " + faker.name.lastName();
-    const image = `https://robohash.org/${name}.png`;
+    const image = `https://robohash.org/${name}.png?size=120x120`;
     const price = faker.finance.amount();
     const stock = faker.random.number({ max: 10, min: 0 });
     const createdAt = faker.date.past();
